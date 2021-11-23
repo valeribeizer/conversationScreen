@@ -8,13 +8,21 @@
 import UIKit
 
 class PathView: UIView {
+  
+  //  MARK: - Variables
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+  var path: UIBezierPath? {
+    didSet { setNeedsDisplay() }
+  }
+  
+  var pathColor: UIColor = .systemGray5 {
+    didSet { setNeedsDisplay() }
+  }
+  
+  //  MARK: - Methods
+  
+  override func draw(_ rect: CGRect) {
+    pathColor.setStroke()
+    path?.stroke()
+  }
 }
